@@ -1,0 +1,31 @@
+import usuarios.*
+import destino.*
+
+describe "Test con Pablo Hari"{
+	
+	fixture{
+		pabloHari	
+	}
+	
+	test "Obtener las millas de PHari" {
+		assert.that(pabloHari.kilometrosDelUsuario()==500)
+	}
+}
+
+describe "Test con Pablo Hari viajando a Silver's Sea"{
+	
+	fixture {
+		pabloHari.volarAUnDestino(silversSea)
+	}
+	
+	test "Hacer que PHari vuele a Silvers's Sea"{
+		assert.that(pabloHari.lugaresVisitados().contains(silversSea))
+	}
+
+	test "Dinero de PHari despues de volar a Silver's Sea es 150"{
+		assert.that(pabloHari.cuenta()==150)
+	}
+	
+	
+}
+

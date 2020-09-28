@@ -1,0 +1,43 @@
+import destino.*
+import agencia.*
+
+describe "Test con Last Toninas"{
+	
+	fixture{
+		lastToninas
+		lastToninas.aplicarDescuento(25)
+	}
+	
+	test "Al aplicarle un 25% a Last Toninas, el precio es $2625 " {
+		assert.that(lastToninas.precio()== 2625)
+		}
+	
+	test "Last Toninas tiene el certificado de descuento al aplicarle el 25%"{
+		assert.that(lastToninas.equipajeImprescindible().contains("Certificado de descuento"))
+	}
+}
+
+describe "Test con Silver's Sea"{
+	fixture{
+		silversSea
+	}
+	
+	test "Averiguar si Silver's Sea es un destino peligroso" {
+    assert.notThat(silversSea.requiereVacuna())
+	}
+}
+
+describe "Test con todos los destinos"{
+	fixture{
+		barrileteCosmico
+	}
+	//EN ESTE HAY QUE VER PORQUE ESTA EN FORMA DE MAP, CON FOR EACH NO FUNCIONA
+test "Aplicar 15% de descuento a todos los destinos" {
+    assert.that(barrileteCosmico.destinos().map({destino => destino.aplicarDescuento(15)})==[2125,1147.5,2975,1275])
+	}
+
+test "Destino mas peligroso hasta el momento" {
+	assert.that(barrileteCosmico.destinos().filter({destino => destino.requiereVacuna()}) == #{lastToninas})
+	}
+}
+

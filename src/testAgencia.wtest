@@ -1,0 +1,25 @@
+import agencia.*
+import destino.*
+
+test "Obtener los destinos más importantes de Barrilete Cósmico" {
+	assert.that(barrileteCosmico.destinosImportantes() == #{garlicsSea, lastToninas})
+}
+
+////EN ESTE HAY QUE VER PORQUE ESTA EN FORMA DE MAP, CON FOR EACH NO FUNCIONA
+//test "Aplicar 15% de descuento a todos los destinos" {
+//    assert.that(barrileteCosmico.destinos().map({destino => destino.aplicarDescuento(15)})==[2125,1147.5,2975,1275])
+//	}
+//
+//test "Destino mas peligroso hasta el momento" {
+//	assert.that(barrileteCosmico.destinos().filter({destino => destino.requiereVacuna()}) == #{lastToninas})
+//}
+
+test "Saber si Barrilete Cósmico es una empresa extrema"{
+	assert.that(barrileteCosmico.esEmpresaExtrema())
+}
+
+//MISMO PROBLEMA CON EL FOR EACH Y EL MAP
+test "Conocer la carta de destinos de Barrilete Cósmico"{
+	assert.that(barrileteCosmico.cartaDeDestino() == #{lastToninas,goodAirs,garlicsSea,silversSea})
+}
+
